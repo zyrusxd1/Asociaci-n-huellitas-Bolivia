@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundación Huellitas 🐾</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="paw-icon">🐾</span>
+      <span>Fundación <strong>Huellitas</strong></span>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#inicio" onclick="closeMobileMenu()">Inicio</a>
+      <a href="#adopcion" onclick="closeMobileMenu()">Adoptar</a>
+      <a href="#tienda" onclick="closeMobileMenu()">Tienda</a>
+      <a href="#noticias" onclick="closeMobileMenu()">Noticias</a>
+      <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="hero-badge">🐾 Desde 2010 salvando vidas</div>
+      <h1>Dales una oportunidad,<br/><span class="highlight">dales un hogar</span></h1>
+      <p>En Fundación Huellitas rescatamos, cuidamos y encontramos el hogar perfecto para perritos y gatitos que merecen una segunda oportunidad.</p>
+      <div class="hero-buttons">
+        <a href="#adopcion" class="btn btn-primary">🐶 Adoptar ahora</a>
+        <a href="#tienda" class="btn btn-secondary">🛒 Ver tienda</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong id="counter-rescue">0</strong><span>Rescatados</span></div>
+        <div class="stat"><strong id="counter-adopted">0</strong><span>Adoptados</span></div>
+        <div class="stat"><strong id="counter-years">0</strong><span>Años activos</span></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="pet-card-floating card-1">
+        <span class="emoji-big">🐕</span>
+        <p>¡Búscame un hogar!</p>
+      </div>
+      <div class="pet-card-floating card-2">
+        <span class="emoji-big">🐈</span>
+        <p>¡Adóptame!</p>
+      </div>
+      <div class="circle-bg"></div>
+    </div>
+  </section>
+
+  <!-- ===== ADOPCIÓN ===== -->
+  <section class="section adopcion" id="adopcion">
+    <div class="section-header">
+      <div class="section-badge">❤️ Adopción</div>
+      <h2>Perritos y Gatitos<br/><span class="highlight">disponibles</span></h2>
+      <p>Todos nuestros animales están vacunados, desparasitados y listos para un nuevo hogar lleno de amor.</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filter-tabs">
+      <button class="tab active" onclick="filterPets('todos', this)">🐾 Todos</button>
+      <button class="tab" onclick="filterPets('perro', this)">🐶 Perritos</button>
+      <button class="tab" onclick="filterPets('gato', this)">🐱 Gatitos</button>
+    </div>
+
+    <div class="pets-grid" id="pets-grid">
+
+      <div class="pet-card" data-type="perro">
+        <div class="pet-img-wrap">
+          <div class="pet-emoji">🐶</div>
+          <div class="pet-badge">Disponible</div>
+        </div>
+        <div class="pet-info">
+          <h3>Max</h3>
+          <div class="pet-tags">
+            <span class="tag">🐕 Perro</span>
+            <span class="tag">2 años</span>
+            <span class="tag">Mediano</span>
+          </div>
+          <p>Max es un perrito juguetón y cariñoso. Le encanta correr y hacer nuevos amigos.</p>
+          <button class="btn btn-adopt" onclick="openModal('Max','Perro','2 años','Mediano','Max es un perrito juguetón y cariñoso. Le encanta correr y hacer nuevos amigos. Es ideal para familias con niños.')">❤️ Quiero adoptarlo</button>
+        </div>
+      </div>
+
+      <div class="pet-card" data-type="gato">
+        <div class="pet-img-wrap" style="background: linear-gradient(135deg,#ffd6e7,#ffb3c6);">
+          <div class="pet-emoji">🐱</div>
+          <div class="pet-badge badge-cat">Disponible</div>
+        </div>
+        <div class="pet-info">
+          <h3>Luna</h3>
+          <div class="pet-tags">
+            <span class="tag">🐈 Gato</span>
+            <span class="tag">1 año</span>
+            <span class="tag">Pequeña</span>
+          </div>
+          <p>Luna es una gatita muy tranquila, perfecta para apartamentos. Adora las caricias.</p>
+          <button class="btn btn-adopt" onclick="openModal('Luna','Gato','1 año','Pequeña','Luna es una gatita muy tranquila, perfecta para apartamentos. Adora las caricias y ronronea todo el tiempo.')">❤️ Quiero adoptarla</button>
+        </div>
+      </div>
+
+      <div class="pet-card" data-type="perro">
+        <div class="pet-img-wrap" style="background: linear-gradient(135deg,#d4f1c0,#a8e6a3);">
+          <div class="pet-emoji">🐕</div>
+          <div class="pet-badge">Disponible</div>
+        </div>
+        <div class="pet-info">
+          <h3>Rocky</h3>
+          <div class="pet-tags">
+            <span class="tag">🐕 Perro</span>
+            <span class="tag">3 años</span>
+            <span class="tag">Grande</span>
+          </div>
+          <p>Rocky es un perro protector y leal. Perfecto para casas con jardín.</p>
+          <button class="btn btn-adopt" onclick="openModal('Rocky','Perro','3 años','Grande','Rocky es un perro protector y leal. Perfecto para casas con jardín. Está entrenado y obedece órdenes básicas.')">❤️ Quiero adoptarlo</button>
+        </div>
+      </div>
+
+      <div class="pet-card" data-type="gato">
+        <div class="pet-img-wrap" style="background: linear-gradient(135deg,#ffe8b0,#ffd07a);">
+          <div class="pet-emoji">🐈</div>
+          <div class="pet-badge badge-cat">Disponible</div>
+        </div>
+        <div class="pet-info">
+          <h3>Mochi</h3>
+          <div class="pet-tags">
+            <span class="tag">🐈 Gato</span>
+            <span class="tag">6 meses</span>
+            <span class="tag">Pequeño</span>
+          </div>
+          <p>Mochi es un gatito bebé muy curioso y travieso. Llena de alegría cualquier hogar.</p>
+          <button class="btn btn-adopt" onclick="openModal('Mochi','Gato','6 meses','Pequeño','Mochi es un gatito bebé muy curioso y travieso. Llena de alegría cualquier hogar y se lleva bien con otros animales.')">❤️ Quiero adoptarlo</button>
+        </div>
+      </div>
+
+      <div class="pet-card" data-type="perro">
+        <div class="pet-img-wrap" style="background: linear-gradient(135deg,#e0d4f7,#c4b0f0);">
+          <div class="pet-emoji">🐶</div>
+          <div class="pet-badge">Disponible</div>
+        </div>
+        <div class="pet-info">
+          <h3>Bella</h3>
+          <div class="pet-tags">
+            <span class="tag">🐕 Perro</span>
+            <span class="tag">4 años</span>
+            <span class="tag">Mediano</span>
+          </div>
+          <p>Bella es muy dulce y calmada. Ideal para personas mayores o familias tranquilas.</p>
+          <button class="btn btn-adopt" onclick="openModal('Bella','Perro','4 años','Mediano','Bella es muy dulce y calmada. Ideal para personas mayores o familias tranquilas. Le encanta dormir y recibir caricias.')">❤️ Quiero adoptarla</button>
+        </div>
+      </div>
+
+      <div class="pet-card" data-type="gato">
+        <div class="pet-img-wrap" style="background: linear-gradient(135deg,#b0e8ff,#80d4f8);">
+          <div class="pet-emoji">🐱</div>
+          <div class="pet-badge badge-cat">Disponible</div>
+        </div>
+        <div class="pet-info">
+          <h3>Nube</h3>
+          <div class="pet-tags">
+            <span class="tag">🐈 Gato</span>
+            <span class="tag">2 años</span>
+            <span class="tag">Mediano</span>
+          </div>
+          <p>Nube es un gato muy inteligente y observador. Se adapta fácilmente a nuevos entornos.</p>
+          <button class="btn btn-adopt" onclick="openModal('Nube','Gato','2 años','Mediano','Nube es un gato muy inteligente y observador. Se adapta fácilmente a nuevos entornos y es muy limpio.')">❤️ Quiero adoptarlo</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== TIENDA ===== -->
+  <section class="section tienda" id="tienda">
+    <div class="section-header">
+      <div class="section-badge">🛒 Tienda</div>
+      <h2>Productos para tus<br/><span class="highlight">mascotas</span></h2>
+      <p>Cada compra apoya directamente el rescate y cuidado de más animales. ¡Compra con amor!</p>
+    </div>
+
+    <div class="products-grid" id="products-grid">
+
+      <div class="product-card">
+        <div class="product-img">🦴</div>
+        <div class="product-info">
+          <div class="product-category">Alimentación</div>
+          <h3>Kit de premios naturales</h3>
+          <p>Pack de premios 100% naturales para perros. Sin conservantes ni colorantes.</p>
+          <div class="product-footer">
+            <span class="price">$25.000</span>
+            <button class="btn btn-cart" onclick="addToCart('Kit de premios naturales', 25000)">
+              <i class="fas fa-shopping-cart"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg,#ffd6e7,#ffb3c6);">🐾</div>
+        <div class="product-info">
+          <div class="product-category">Accesorios</div>
+          <h3>Collar personalizado</h3>
+          <p>Collar de tela con placa grabada con el nombre de tu mascota. ¡Único!</p>
+          <div class="product-footer">
+            <span class="price">$18.000</span>
+            <button class="btn btn-cart" onclick="addToCart('Collar personalizado', 18000)">
+              <i class="fas fa-shopping-cart"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg,#d4f1c0,#a8e6a3);">🏠</div>
+        <div class="product-info">
+          <div class="product-category">Comodidad</div>
+          <h3>Cama suave para mascotas</h3>
+          <p>Cama acolchada en tela polar, lavable y extra cómoda. Disponible en 3 tamaños.</p>
+          <div class="product-footer">
+            <span class="price">$45.000</span>
+            <button class="btn btn-cart" onclick="addToCart('Cama suave para mascotas', 45000)">
+              <i class="fas fa-shopping-cart"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg,#ffe8b0,#ffd07a);">🧸</div>
+        <div class="product-info">
+          <div class="product-category">Juguetes</div>
+          <h3>Set de juguetes x5</h3>
+          <p>Cinco juguetes variados para gatos y perros: pelotas, ratones, cuerdas y más.</p>
+          <div class="product-footer">
+            <span class="price">$30.000</span>
+            <button class="btn btn-cart" onclick="addToCart('Set de juguetes x5', 30000)">
+              <i class="fas fa-shopping-cart"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg,#e0d4f7,#c4b0f0);">🧴</div>
+        <div class="product-info">
+          <div class="product-category">Higiene</div>
+          <h3>Shampoo natural para mascotas</h3>
+          <p>Formulado con ingredientes naturales, suave para la piel sensible de tu mascota.</p>
+          <div class="product-footer">
+            <span class="price">$15.000</span>
+            <button class="btn btn-cart" onclick="addToCart('Shampoo natural para mascotas', 15000)">
+              <i class="fas fa-shopping-cart"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg,#b0e8ff,#80d4f8);">👕</div>
+        <div class="product-info">
+          <div class="product-category">Ropa</div>
+          <h3>Sudadera Huellitas</h3>
+          <p>Sudadera con nuestro logo bordado. Apoya la fundación y luce cool. ¡Para humanos!</p>
+          <div class="product-footer">
+            <span class="price">$55.000</span>
+            <button class="btn btn-cart" onclick="addToCart('Sudadera Huellitas', 55000)">
+              <i class="fas fa-shopping-cart"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Carrito flotante -->
+    <div class="cart-widget" id="cart-widget" onclick="openCartModal()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+  </section>
+
+  <!-- ===== NOTICIAS ===== -->
+  <section class="section noticias" id="noticias">
+    <div class="section-header">
+      <div class="section-badge">📰 Noticias</div>
+      <h2>Lo último de<br/><span class="highlight">Huellitas</span></h2>
+      <p>Mantente al día con nuestras actividades, eventos y casos de éxito.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <div class="news-card featured">
+        <div class="news-img" style="background: linear-gradient(135deg,#ff6b6b,#ee5a24);">
+          <span>📢</span>
+          <div class="news-category-badge">Destacado</div>
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span><i class="fas fa-calendar"></i> 10 Nov 2026</span>
+            <span><i class="fas fa-tag"></i> Evento</span>
+          </div>
+          <h3>Gran jornada de adopción este fin de semana</h3>
+          <p>Este sábado y domingo realizaremos nuestra jornada de adopción más grande del año en el Parque Centenario. ¡Más de 30 animales esperan su hogar!</p>
+          <a href="#" class="news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img" style="background: linear-gradient(135deg,#a29bfe,#6c5ce7);">
+          <span>💉</span>
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span><i class="fas fa-calendar"></i> 5 Nov 2026</span>
+            <span><i class="fas fa-tag"></i> Salud</span>
+          </div>
+          <h3>Jornada de vacunación gratuita para mascotas del barrio</h3>
+          <p>En alianza con la Secretaría de Salud llevamos vacunas y desparasitación sin costo a más de 200 mascotas del sector.</p>
+          <a href="#" class="news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img" style="background: linear-gradient(135deg,#55efc4,#00b894);">
+          <span>🏠</span>
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span><i class="fas fa-calendar"></i> 1 Nov 2026</span>
+            <span><i class="fas fa-tag"></i> Historia</span>
+          </div>
+          <h3>¡Thor encontró su hogar después de 8 meses!</h3>
+          <p>Thor, uno de nuestros perritos más antiguos en la fundación, finalmente fue adoptado por una familia increíble. ¡Los amores sí llegan!</p>
+          <a href="#" class="news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img" style="background: linear-gradient(135deg,#fdcb6e,#e17055);">
+          <span>🤝</span>
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span><i class="fas fa-calendar"></i> 25 Oct 2026</span>
+            <span><i class="fas fa-tag"></i> Alianzas</span>
+          </div>
+          <h3>Nueva alianza con clínica veterinaria SanPatas</h3>
+          <p>Gracias a esta alianza nuestros animales rescatados recibirán atención médica prioritaria y descuentos especiales para adoptantes.</p>
+          <a href="#" class="news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="section contacto" id="contacto">
+    <div class="section-header">
+      <div class="section-badge">📬 Contacto</div>
+      <h2>¿Quieres<br/><span class="highlight">ayudarnos?</span></h2>
+      <p>Escríbenos para adoptar, donar, hacer voluntariado o simplemente para saber más.</p>
+    </div>
+
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Dirección</strong>
+            <p>Cartagena de Indias, Bolívar, Colombia</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Teléfono / WhatsApp</strong>
+            <p>+57 300 123 4567</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong>Correo</strong>
+            <p>fundacion@huellitas.org</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <strong>Horario de atención</strong>
+            <p>Lun – Sáb: 8am – 5pm</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@correo.com" required />
+        </div>
+        <div class="form-group">
+          <label>Asunto</label>
+          <select>
+            <option value="">Selecciona un asunto</option>
+            <option>Quiero adoptar</option>
+            <option>Quiero hacer una donación</option>
+            <option>Quiero ser voluntario</option>
+            <option>Reportar un animal en situación de riesgo</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="Escribe tu mensaje aquí..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="paw-icon">🐾</span>
+        <strong>Fundación Huellitas</strong>
+        <p>Rescatando, cuidando y encontrando hogares llenos de amor desde 2010.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <a href="#inicio">Inicio</a>
+        <a href="#adopcion">Adoptar</a>
+        <a href="#tienda">Tienda</a>
+        <a href="#noticias">Noticias</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-links">
+        <h4>Ayúdanos</h4>
+        <a href="#">Donar</a>
+        <a href="#">Ser voluntario</a>
+        <a href="#">Apadrina un animal</a>
+        <a href="#">Reportar maltrato</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>🐾 &copy; 2026 Fundación Huellitas · Hecho con ❤️ para los animales</p>
+    </div>
+  </footer>
+
+  <!-- ===== MODAL ADOPCIÓN ===== -->
+  <div class="modal-overlay" id="adopt-modal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      <div class="modal-pet-emoji" id="modal-emoji">🐶</div>
+      <h2 id="modal-pet-name">Nombre</h2>
+      <div class="modal-tags" id="modal-tags"></div>
+      <p id="modal-description">Descripción</p>
+      <div class="modal-process">
+        <h4>Proceso de adopción:</h4>
+        <div class="steps">
+          <div class="step"><span>1</span> Llena el formulario</div>
+          <div class="step"><span>2</span> Visita a la fundación</div>
+          <div class="step"><span>3</span> Periodo de adaptación</div>
+          <div class="step"><span>4</span> ¡Firma y llévalo!</div>
+        </div>
+      </div>
+      <a href="#contacto" class="btn btn-primary" style="display:block;text-align:center;" onclick="closeModal()">
+        📬 Contactar para adoptar
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== MODAL CARRITO ===== -->
+  <div class="modal-overlay" id="cart-modal" onclick="closeCartOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeCartModal()"><i class="fas fa-times"></i></button>
+      <h2>🛒 Tu carrito</h2>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-total">
+        <strong>Total: </strong><span id="cart-total-price">$0</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:1rem;" onclick="checkout()">
+        💳 Proceder al pago
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
